@@ -24,8 +24,10 @@ module.exports = {
         extensions: [".js", ".json", ".jsx", ".css"],
         alias: {
             Main: path.resolve(__dirname, "app/src/components/Main.jsx"),
-
+            Navbar: path.resolve(__dirname, "app/src/components/layout/Navbar.jsx"),
+            Footer: path.resolve(__dirname, "app/src/components/layout/Footer.jsx"),
             Home:  path.resolve(__dirname, "app/src/components/pages/home/Home.jsx"),
+
         }
     }
 }
