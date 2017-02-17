@@ -15,7 +15,8 @@ module.exports = {
                 ],
                 loader: "babel-loader",
                 options: {
-                    presets: ["react", "es2015"]
+                    presets: ["react", "es2015"],
+                    plugins: ["transform-class-properties", ["transform-object-rest-spread", { "useBuiltIns": true }]]
                 }
             }
         ]
@@ -23,10 +24,14 @@ module.exports = {
     resolve: {
         extensions: [".js", ".json", ".jsx", ".css"],
         alias: {
-            Main: path.resolve(__dirname, "app/src/components/Main.jsx"),
+            // Layout Components
+            Main: path.resolve(__dirname, "app/src/components/layout/Main.jsx"),
             Navbar: path.resolve(__dirname, "app/src/components/layout/Navbar.jsx"),
             Footer: path.resolve(__dirname, "app/src/components/layout/Footer.jsx"),
+            // Page Components and children
             Home:  path.resolve(__dirname, "app/src/components/pages/home/Home.jsx"),
+            // Modals
+            CreateRoomModal: path.resolve(__dirname, "app/src/components/modals/CreateRoomModal.jsx"),
 
         }
     }
