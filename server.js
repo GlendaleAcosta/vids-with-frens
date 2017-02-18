@@ -5,7 +5,12 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 var PORT = process.env.PORT || 3030;
-var app = express();
+// var app = express();
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
+var app = require('express')();
+var http = require('http').createServer(app);
+var io = require('socket.io')(http);
 
 // Mongo Connection
 mongoose.Promise = global.Promise;
@@ -33,6 +38,8 @@ app.use(express.static('app/public'));
 // Controllers
 const roomController = require('./controllers/room');
 
+
+
 // Routes
 app.post('/api/room', roomController.postRoom);
 app.post('/api/validate-room', roomController.validateRoom);
@@ -40,7 +47,16 @@ app.get('/*', function(req,res,next){
     res.sendFile(path.join(__dirname, 'app/public/index.html'));
 });
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
+
+
+
 // Create Server
-app.listen( PORT , () => {
+http.listen( PORT , () => {
     console.log("App is up on port " + PORT);
 });
