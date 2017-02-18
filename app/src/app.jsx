@@ -27,7 +27,7 @@ var validateRoom = (nextState, replace, callback) => {
           console.log(res.body);
           callback();
         } else {
-          replace('error404');
+          replace('/error404');
           callback();
         }
       }

@@ -5,9 +5,6 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 var PORT = process.env.PORT || 3030;
-// var app = express();
-// var http = require('http').Server(app);
-// var io = require('socket.io')(http);
 var app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
@@ -51,7 +48,15 @@ io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
     console.log('user disconnected');
+    
   });
+
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+
+    io.emit('chat', msg);
+  });
+  
 });
 
 
