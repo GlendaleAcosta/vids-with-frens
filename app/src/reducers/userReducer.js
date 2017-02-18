@@ -1,10 +1,11 @@
-export default function userReducer(state={
+const initialState = {
   id: null,
   name: null,
   fetching: false,
   fetched: false,
   error: null
-}, action){
+}
+export default function userReducer(state = initialState, action){
 
   switch (action.type){
     case 'FETCH_USER': {
@@ -24,7 +25,8 @@ export default function userReducer(state={
         fetching: false
       }
     }
-    default: return state;
+    default: 
+      return state;
   }
 
 }

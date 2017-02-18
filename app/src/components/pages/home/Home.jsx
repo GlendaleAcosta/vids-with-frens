@@ -1,19 +1,23 @@
 import React from 'react';
 import CreateRoomModal from 'CreateRoomModal';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {fetchUser} from '../../../actions/userActions';
+import {showModal} from '../../../actions/modalActions';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   constructor(props){
     super(props);
-
   }
 
   createRoom = (e) => {
-    e.preventDefault();
-    alert("createRoom()")
+    e.preventDefault();  
+    this.props.showModal()
+    console.log(this.props);
   }
   
   render(){
-    console.log('Home component rendered');
+    console.log('RENDER: HOME');
 
     return (   
       <div className="jumbotron jumbotron-fluid">
@@ -30,3 +34,12 @@ export default class Home extends React.Component {
     )
   }
 }
+
+// Redux config
+function mapStateToProps(state){
+    return {user: state.user};
+}
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({showModal: showModal}, dispatch);
+}
+export default connect(mapStateToProps, matchDispatchToProps)(Home);

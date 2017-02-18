@@ -5,9 +5,9 @@ import { Route, Router, IndexRoute, browserHistory } from 'react-router';
 import Main from 'Main';
 import Home from 'Home';
 // Redux
-import store from './store/store'
+import store from './store/store';
 import {Provider} from 'react-redux';
-
+// SCSS
 import "!style-loader!css-loader!sass-loader!./stylesheets/main.scss";
 
 ReactDOM.render(

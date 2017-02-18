@@ -2,6 +2,7 @@ import React from 'react';
 
 export default class Navbar extends React.Component {
   render(){
+    console.log("RENDER: NAV");
     return (
       <nav className="navbar fixed-top navbar-toggleable-md navbar-light bg-faded">
         
