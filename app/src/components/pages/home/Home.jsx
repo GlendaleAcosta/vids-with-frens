@@ -13,7 +13,6 @@ class Home extends React.Component {
   createRoom = (e) => {
     e.preventDefault();  
     this.props.showModal()
-    console.log(this.props);
   }
   
   render(){

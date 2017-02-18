@@ -2,10 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {hideModal} from '../../actions/modalActions';
+import CreateRoomModal from 'CreateRoomModal';
 
 class Modal extends React.Component {
   constructor(props){
     super(props);
+    console.log(props);
   }
   
   exitModal = (e) => {
@@ -16,10 +18,8 @@ class Modal extends React.Component {
     return (
       <div className="modal-container">
 
-        <div className="card modal-block">
-          <div className="card-block">
-
-          </div>
+        <div className="card col-4 modal-block">
+            <CreateRoomModal/>
         </div>
         
         <div onClick={this.exitModal} className="modal-darkness"></div>
