@@ -7,7 +7,6 @@ import CreateRoomModal from 'CreateRoomModal';
 class Modal extends React.Component {
   constructor(props){
     super(props);
-    console.log(props);
   }
   
   exitModal = (e) => {
@@ -17,11 +16,10 @@ class Modal extends React.Component {
   render(){
     return (
       <div className="modal-container">
-
         <div className="card col-4 modal-block">
             <CreateRoomModal/>
-        </div>
-        
+            <div onClick={this.exitModal} className="modal-x"></div>
+        </div>        
         <div onClick={this.exitModal} className="modal-darkness"></div>
       </div>
     )
