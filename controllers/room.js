@@ -15,3 +15,18 @@ exports.postRoom = (req,res,next) => {
         });
     })
 }
+
+exports.validateRoom = (req, res, next) => {
+    Room.findOne({_id: req.body.roomId}, (err, existingRoom) => {
+        if(err){console.log(err)};
+        if(existingRoom){
+            return res.json({
+                success: true
+            })
+        } else {
+            return res.json({
+                success: false
+            })
+        }
+    })
+}

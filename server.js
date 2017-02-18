@@ -35,6 +35,7 @@ const roomController = require('./controllers/room');
 
 // Routes
 app.post('/api/room', roomController.postRoom);
+app.post('/api/validate-room', roomController.validateRoom);
 app.get('/*', function(req,res,next){
     res.sendFile(path.join(__dirname, 'app/public/index.html'));
 });
