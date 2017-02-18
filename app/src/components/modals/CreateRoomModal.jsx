@@ -1,12 +1,29 @@
 import React from 'react';
+import request from 'superagent';
 
 export default class CreateRoomModal extends React.Component {
 
-  onSubmit = (e) =>{
+  onSubmit = (e) => {
     e.preventDefault();
+    var that = this;
     var username = this.refs.username.value;
-    
+    window.sessionStorage.setItem('username', username);
+
+    request
+      .post('/api/room')
+      .send({ username: username })
+      .set('Accept', 'application/json')
+      .end(function(err, res){
+        if(err){console.log(res)};
+        if(res){
+          that.refs.username.value = "";
+          that.refs.username.placeholder = "";
+          console.log(res);
+
+        }
+      })
   }
+
   render(){
     return (
       <div className="card-block">
