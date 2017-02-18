@@ -30,6 +30,7 @@ module.exports = {
             Footer: path.resolve(__dirname, "app/src/components/layout/Footer.jsx"),
             // Page Components and children
             Home:  path.resolve(__dirname, "app/src/components/pages/home/Home.jsx"),
+            Room: path.resolve(__dirname, "app/src/components/pages/room/Room.jsx"),
             // Modals
             Modal: path.resolve(__dirname, "app/src/components/modals/Modal.jsx"),
             CreateRoomModal: path.resolve(__dirname, "app/src/components/modals/CreateRoomModal.jsx"),

@@ -1,7 +1,14 @@
 import React from 'react';
 import request from 'superagent';
+import {browserHistory} from 'react-router';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {hideModal} from '../../actions/modalActions';
 
-export default class CreateRoomModal extends React.Component {
+class CreateRoomModal extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -16,10 +23,12 @@ export default class CreateRoomModal extends React.Component {
       .end(function(err, res){
         if(err){console.log(res)};
         if(res){
-          that.refs.username.value = "";
-          that.refs.username.placeholder = "";
-          console.log(res);
-
+          if(res.body.success){
+            that.refs.username.value = "";
+            that.refs.username.placeholder = "";
+            that.props.hideModal();
+            browserHistory.push('/room/' + res.body.roomId);
+          }
         }
       })
   }
@@ -39,3 +48,14 @@ export default class CreateRoomModal extends React.Component {
     )
   }
 }
+
+// Redux config
+function mapStateToProps(state){
+    return {
+      modal: state.modal
+    };
+}
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({hideModal: hideModal}, dispatch);
+}
+export default connect(mapStateToProps, matchDispatchToProps)(CreateRoomModal);

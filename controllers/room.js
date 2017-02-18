@@ -9,6 +9,7 @@ exports.postRoom = (req,res,next) => {
     room.save((err)=>{
         if(err) {console.log(err)};
         return res.json({ 
+                roomId: room.id,
                 msg: "Room has been created!",
                 success: true
         });
