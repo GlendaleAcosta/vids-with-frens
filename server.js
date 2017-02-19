@@ -45,16 +45,20 @@ app.get('/*', function(req,res,next){
 });
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+  var roomId = socket.handshake.query.roomId;
+  // console.log('a user connected. room-id: ' + roomId);
+  socket.join(roomId);
+  
   socket.on('disconnect', function(){
-    console.log('user disconnected');  
+    // console.log('user disconnected');  
+    socket.leave(roomId);
   });
 
   socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-    io.emit('chat', msg);
+    io.to(roomId).emit('chat', msg);
   });
   
+
 });
 
 
