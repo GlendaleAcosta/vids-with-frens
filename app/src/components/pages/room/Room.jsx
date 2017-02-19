@@ -1,22 +1,17 @@
 import React from 'react';
-import Chat from 'Chat';
-import Chatbox from 'Chatbox';
-import io from 'socket.io-client'
-var socket = io('http://localhost:3030');
+import ChatContainer from 'ChatContainer';
 
 export default class Room extends React.Component{
   constructor(props){
-    super(props);
+    super(props);     
   }
   
+
   render(){
+    console.log("RENDER: ROOM");
     return (
-      <div className="jumbotron jumbotron-fluid">
-        <div className="pt-5 container text-center">
-          <h1 className="display-3">Room Component</h1> 
-          <Chat socket={socket}/>
-          <Chatbox socket={socket}/>
-        </div>
+      <div className="full-screen">
+        <ChatContainer/>
       </div>
     )
   }

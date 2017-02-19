@@ -1,23 +1,22 @@
 import React from 'react';
-import io from 'socket.io-client';
 
-export default class Chatbox extends React.Component{
+export default class ChatBox extends React.Component{
   constructor(props){
-    super(props);
+    super(props);        
   }
-  onSubmit = (e) => {
-    e.preventDefault();
-    var {socket} = this.props;
-    
-    var msg = this.refs.msg.value;
-    socket.emit('chat message', msg);
-  }
+   
+  
   render(){
+    console.log("RENDER CHAT");
+    console.log(this.props.messages);
+    
+    var renderMessages = this.props.messages.map(function(message, index){
+        return <p key={index}>{message.username}: {message.message}</p>
+      })
     return (
-      <form onSubmit={this.onSubmit} className="col-7 form-inline"> 
-          <input ref="msg" className="form-control col-10" type="text"/>
-          <button type="submit" className="btn btn-primary col-2">Send</button>
-      </form>
+      <div className="chat-box">
+        {renderMessages}
+      </div>
     )
   }
 }

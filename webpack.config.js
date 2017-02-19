@@ -31,8 +31,9 @@ module.exports = {
             // Page Components and children
             Home:  path.resolve(__dirname, "app/src/components/pages/home/Home.jsx"),
             Room: path.resolve(__dirname, "app/src/components/pages/room/Room.jsx"),
-                Chat: path.resolve(__dirname, "app/src/components/pages/room/Chat.jsx"),
-                Chatbox: path.resolve(__dirname, "app/src/components/pages/room/Chatbox.jsx"),
+                ChatContainer: path.resolve(__dirname, "app/src/components/pages/room/ChatContainer.jsx"),
+                ChatBox: path.resolve(__dirname, "app/src/components/pages/room/Chatbox.jsx"),
+                ChatForm: path.resolve(__dirname, "app/src/components/pages/room/ChatForm.jsx"),
             Error404: path.resolve(__dirname, "app/src/components/pages/404.jsx"),
             // Modals
             Modal: path.resolve(__dirname, "app/src/components/modals/Modal.jsx"),
