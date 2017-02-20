@@ -36,6 +36,7 @@ module.exports = {
                 ChatForm: path.resolve(__dirname, "app/src/components/pages/room/ChatForm.jsx"),
                 YouTube: path.resolve(__dirname, "app/src/components/pages/room/YouTube.jsx"),
                 QueueContainer: path.resolve(__dirname, "app/src/components/pages/room/QueueContainer.jsx"),
+                VideoList: path.resolve(__dirname, "app/src/components/pages/room/VideoList.jsx"),
             Error404: path.resolve(__dirname, "app/src/components/pages/404.jsx"),
             // Modals
             Modal: path.resolve(__dirname, "app/src/components/modals/Modal.jsx"),

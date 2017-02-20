@@ -16,7 +16,6 @@ export default class Room extends React.Component{
   componentDidMount(){
     var that = this;
     var {video, socket} = this.state;
-    
   }
 
   onReady = (video) => {
@@ -25,6 +24,7 @@ export default class Room extends React.Component{
     socket.on('video_play', function(playTime){
       // console.log("video playing at " + playTime);
       var currentTime = video.target.getCurrentTime();
+      
       if (currentTime - playTime > 0.15 || playTime - currentTime < -0.15 ){
         video.target.seekTo(playTime, true);
         video.target.playVideo();
@@ -67,7 +67,7 @@ export default class Room extends React.Component{
       height: '500px',
       width: '100%',
       playerVars: { // https://developers.google.com/youtube/player_parameters 
-        autoplay: 0,
+        autoplay: 1,
         enablejsapi: 1,
         color: 'red'
       },
@@ -76,6 +76,8 @@ export default class Room extends React.Component{
       marginTop: '55px',
       height: 'auto',
     }
+    // cPAbx5kgCJo
+    // 3kKREKoRTMQ
     return (
       <div className="full-screen">
         <div className="col-2 queue-container">
@@ -83,7 +85,7 @@ export default class Room extends React.Component{
         </div>
         <div className="col-7" style={youtubeStyle}>
           <YouTube
-            videoId="3kKREKoRTMQ"
+            videoId="_TSZe3mfGYg"
             opts={opts}
             onStateChange = {this.onStateChange}
             onReady={this.onReady}
