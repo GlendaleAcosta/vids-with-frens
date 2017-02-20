@@ -33,7 +33,7 @@ export default class ChatContainer extends React.Component{
   render(){
     var { messages} = this.state;
     return(
-      <div className="chat-container">
+      <div className="col-3 chat-container">
           <ChatBox socket={this.props.socket} messages={messages}/>
           <ChatForm socket={this.props.socket} />
       </div>

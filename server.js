@@ -35,8 +35,6 @@ app.use(express.static('app/public'));
 // Controllers
 const roomController = require('./controllers/room');
 
-
-
 // Routes
 app.post('/api/room', roomController.postRoom);
 app.post('/api/validate-room', roomController.validateRoom);
@@ -44,24 +42,31 @@ app.get('/*', function(req,res,next){
     res.sendFile(path.join(__dirname, 'app/public/index.html'));
 });
 
+// WebSocket
 io.on('connection', function(socket){
   var roomId = socket.handshake.query.roomId;
   // console.log('a user connected. room-id: ' + roomId);
   socket.join(roomId);
   
-  socket.on('disconnect', function(){
-    // console.log('user disconnected');  
-    socket.leave(roomId);
-  });
-
   socket.on('chat message', function(msg){
     io.to(roomId).emit('chat', msg);
   });
-  
 
+  socket.on('video_play', function(time){
+    console.log("video started playing at: " + time);
+    io.to(roomId).emit('video_play', time)
+  })
+
+  socket.on('video_paused', function(time){
+    console.log("video paused at: " + time);
+    io.to(roomId).emit('video_paused', time)
+  })
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');  
+    socket.leave(roomId);
+  });
 });
-
-
 
 // Create Server
 http.listen( PORT , () => {
