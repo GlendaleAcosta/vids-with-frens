@@ -6,10 +6,7 @@ export default class ChatBox extends React.Component{
   }
    
   
-  render(){
-    console.log("RENDER CHAT");
-    console.log(this.props.messages);
-    
+  render(){    
     var renderMessages = this.props.messages.map(function(message, index){
         return (
           <li className="chat-line" key={index}>

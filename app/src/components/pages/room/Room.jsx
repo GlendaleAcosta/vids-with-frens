@@ -67,7 +67,7 @@ export default class Room extends React.Component{
       height: '500px',
       width: '100%',
       playerVars: { // https://developers.google.com/youtube/player_parameters 
-        autoplay: 1,
+        autoplay: 0,
         enablejsapi: 1,
         color: 'red'
       },
@@ -85,7 +85,7 @@ export default class Room extends React.Component{
         </div>
         <div className="col-7" style={youtubeStyle}>
           <YouTube
-            videoId="_TSZe3mfGYg"
+            videoId="HPFXh652HPs"
             opts={opts}
             onStateChange = {this.onStateChange}
             onReady={this.onReady}
