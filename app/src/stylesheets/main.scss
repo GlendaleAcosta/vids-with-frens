@@ -7,9 +7,9 @@ body {
 
 .navbar{
   height: 55px;
-  background-color: #2e80a7;
+  // background-color: #2e80a7;
   // color: #fff;
-  box-shadow: 1px 1px 5px rgb(80,80,80);
+  box-shadow: 1px 1px 5px rgb(180,180,180);
 }
 .white {
   color: #fff;
@@ -25,11 +25,13 @@ body {
 }
 // -------------------------------------------
 .queue-container {
-  background-color: #141d1f;
+  // background-color: #141d1f;
+  background-color: #e6e6e6;
   // padding-top: 55px;
   padding: 55px 0px 10px 0px;
   display: flex;
   flex-direction: column;
+  box-shadow: inset 0px 0px 4px #8e8e8e;
 }
 .search-input{
   font-size: 12px;
@@ -52,17 +54,26 @@ body {
 .search-form {
   padding: 20px 10px;
   width: 100%;
+  border-bottom: 1px solid rgb(200,200,200);
   // background-color: lightblue;
 }
 
 .video-card{
-  border: 0;
-  border-radius: 2px;
+  // border: 0;
+  // border-radius: 5px;
   margin: 10px 0;
   cursor: pointer;
+  // border: 2px solid white;
   p {
     padding: 3px;
   }
+  img {
+    // border-top-left-radius: 5px;
+    // border-top-right-radius: 5px;
+    border-left: 10px solid black;
+    border-right: 10px solid black;
+  }
+  
 }
 
 
