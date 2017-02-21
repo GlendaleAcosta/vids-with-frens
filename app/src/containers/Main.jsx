@@ -17,7 +17,6 @@ class Main extends React.Component{
   } 
 
   render(){    
-    console.log("RENDER: MAIN");
     return (
       <div>
         <Navbar/>

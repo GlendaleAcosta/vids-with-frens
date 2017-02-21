@@ -5,15 +5,19 @@ export default class VideoList extends React.Component{
     super(props);
   }
 
+  onSelect = (video, e) =>{
+    console.log(video.id.videoId);
+  }
+
   render(){
+    var that = this;
     var videolist;
-    console.log(this.props.videos);
     if(this.props.videos){
       var videolist = this.props.videos.map(function(video, index){
         return (
-          <div className="card" key={index}>
+          <div onClick={() => that.onSelect(video)} className="card video-card" key={index}>
             <img src={video.snippet.thumbnails.default.url}/>
-            <p>{video.snippet.title}</p>
+            <p className="small">{video.snippet.title}</p>
             {/*<p>{video.id.videoId}</p>*/}
           </div>
         ) 
@@ -22,7 +26,7 @@ export default class VideoList extends React.Component{
     
 
     return(
-      <div>
+      <div className="video-list-container">
         {videolist}
       </div>
     )

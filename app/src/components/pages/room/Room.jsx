@@ -46,10 +46,6 @@ export default class Room extends React.Component{
     
   }
 
-  onStateChange = (video) => {
-    console.log(video);
-  }
-
   onPlay = (video) => {
     var {socket} = this.state;
     var time = video.target.getCurrentTime();
@@ -75,16 +71,16 @@ export default class Room extends React.Component{
     const youtubeStyle = {
       marginTop: '55px',
       height: 'auto',
+      width: '100%'
     }
     // cPAbx5kgCJo
     // 3kKREKoRTMQ
     return (
       <div className="full-screen">
-        <div className="col-2 queue-container">
           <QueueContainer />
-        </div>
-        <div className="col-7" style={youtubeStyle}>
+        <div className="col-7" className="middle" style={youtubeStyle}>
           <YouTube
+            className="test"
             videoId="HPFXh652HPs"
             opts={opts}
             onStateChange = {this.onStateChange}

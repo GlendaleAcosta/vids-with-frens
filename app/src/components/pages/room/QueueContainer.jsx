@@ -39,8 +39,8 @@ export default class QueueContainer extends React.Component{
   render(){
 
     return(
-      <div>
-        <form onSubmit={this.onSubmit} className="form-inline">
+      <div className="col-2 queue-container">
+        <form onSubmit={this.onSubmit} className="search-form form-inline">
             <input ref="search" className="form-control col-7 search-input" type="text" placeholder="Search Video"/>
             <button className="btn btn-primary col-5 search-btn">Search</button>
         </form>
