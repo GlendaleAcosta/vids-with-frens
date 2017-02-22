@@ -69,7 +69,7 @@ export default class Room extends React.Component{
       height: '500px',
       width: '100%',
       playerVars: {
-        autoplay: 0,
+        autoplay: 1,
         color: 'red'
       },
     };

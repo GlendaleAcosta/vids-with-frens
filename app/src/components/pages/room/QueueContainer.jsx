@@ -41,8 +41,13 @@ export default class QueueContainer extends React.Component{
     return(
       <div className="col-2 queue-container">
         <form onSubmit={this.onSubmit} className="search-form form-inline">
-            <input ref="search" className="form-control col-7 search-input" type="text" placeholder="Search Video"/>
-            <button className="btn btn-primary col-5 search-btn">Search</button>
+            <input 
+              ref="search" 
+              className="form-control col-7 search-input br-0" 
+              type="text" 
+              placeholder="Search Video"
+            />
+            <button className="btn btn-primary col-5 search-btn br-0">Search</button>
         </form>
         <VideoList socket={this.props.socket} videos={this.state.videos}/>
       </div>
