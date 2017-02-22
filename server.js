@@ -45,7 +45,6 @@ app.get('/*', function(req,res,next){
 // WebSocket
 io.on('connection', function(socket){
   var roomId = socket.handshake.query.roomId;
-  // console.log('a user connected. room-id: ' + roomId);
   socket.join(roomId);
   
   socket.on('chat message', function(msg){
@@ -53,17 +52,18 @@ io.on('connection', function(socket){
   });
 
   socket.on('video_play', function(time){
-    console.log("video started playing at: " + time);
     io.to(roomId).emit('video_play', time)
   })
 
   socket.on('video_paused', function(time){
-    console.log("video paused at: " + time);
     io.to(roomId).emit('video_paused', time)
   })
 
+  socket.on('current_video', function(videoId){
+    io.to(roomId).emit('current_video', videoId)
+  })
+
   socket.on('disconnect', function(){
-    console.log('user disconnected');  
     socket.leave(roomId);
   });
 });

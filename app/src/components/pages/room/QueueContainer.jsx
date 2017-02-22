@@ -44,7 +44,7 @@ export default class QueueContainer extends React.Component{
             <input ref="search" className="form-control col-7 search-input" type="text" placeholder="Search Video"/>
             <button className="btn btn-primary col-5 search-btn">Search</button>
         </form>
-        <VideoList videos={this.state.videos}/>
+        <VideoList socket={this.props.socket} videos={this.state.videos}/>
       </div>
     )
   }

@@ -1,15 +1,16 @@
 import React from 'react';
 import ChatContainer from 'ChatContainer';
 import io from 'socket.io-client'
-// import YouTube from 'YouTube';
 import YouTube from 'react-youtube';
 import QueueContainer from 'QueueContainer';
+
 export default class Room extends React.Component{
   constructor(props){
     super(props);   
     var socket = io('/', {query: {roomId: props.params.roomId}});
     this.state ={
-      socket: socket
+      socket: socket,
+      selectedVideo: 'Gc40IXMt_3c'
     }
   }
 
@@ -22,7 +23,6 @@ export default class Room extends React.Component{
     var {socket} = this.state;
 
     socket.on('video_play', function(playTime){
-      // console.log("video playing at " + playTime);
       var currentTime = video.target.getCurrentTime();
       
       if (currentTime - playTime > 0.15 || playTime - currentTime < -0.15 ){
@@ -34,7 +34,6 @@ export default class Room extends React.Component{
     });
     
     socket.on('video_paused', function(pauseTime){
-      // console.log("video paused at " + pauseTime);
       var currentTime = video.target.getCurrentTime();
       if (currentTime - pauseTime > 0.15 || pauseTime - currentTime < -0.15){
         video.target.seekTo(pauseTime, true);
@@ -59,12 +58,18 @@ export default class Room extends React.Component{
   }
   
   render(){
+    var that = this;
+    this.state.socket.on('current_video', function(videoId){
+      that.setState({
+        selectedVideo: videoId
+      })
+      
+    })
     const opts = {
       height: '500px',
       width: '100%',
-      playerVars: { // https://developers.google.com/youtube/player_parameters 
+      playerVars: {
         autoplay: 0,
-        enablejsapi: 1,
         color: 'red'
       },
     };
@@ -73,15 +78,14 @@ export default class Room extends React.Component{
       height: 'auto',
       width: '100%'
     }
-    // cPAbx5kgCJo
-    // 3kKREKoRTMQ
+    
     return (
       <div className="full-screen">
-          <QueueContainer />
+          <QueueContainer socket={this.state.socket}/>
         <div className="col-7" className="middle" style={youtubeStyle}>
           <YouTube
             className="test"
-            videoId="HPFXh652HPs"
+            videoId={this.state.selectedVideo}
             opts={opts}
             onStateChange = {this.onStateChange}
             onReady={this.onReady}
@@ -94,3 +98,4 @@ export default class Room extends React.Component{
     )
   }
 }
+

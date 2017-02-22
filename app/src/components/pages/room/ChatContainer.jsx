@@ -2,8 +2,6 @@ import React from 'react';
 import ChatForm from 'ChatForm';
 import ChatBox from 'ChatBox';
 
-
-
 export default class ChatContainer extends React.Component{
   constructor(props){
     super(props);

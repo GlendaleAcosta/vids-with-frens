@@ -6,7 +6,7 @@ export default class VideoList extends React.Component{
   }
 
   onSelect = (video, e) =>{
-    console.log(video.id.videoId);
+    this.props.socket.emit('current_video', video.id.videoId);
   }
 
   render(){
@@ -18,7 +18,6 @@ export default class VideoList extends React.Component{
           <div onClick={() => that.onSelect(video)} className="card video-card" key={index}>
             <img src={video.snippet.thumbnails.default.url}/>
             <p className="small">{video.snippet.title}</p>
-            {/*<p>{video.id.videoId}</p>*/}
           </div>
         ) 
       });
@@ -32,3 +31,5 @@ export default class VideoList extends React.Component{
     )
   }
 }
+
+

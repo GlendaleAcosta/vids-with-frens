@@ -5,6 +5,7 @@ import Modal from 'Modal';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchUser} from '../actions/userActions';
+
 class Main extends React.Component{
   constructor(props){
     super(props);

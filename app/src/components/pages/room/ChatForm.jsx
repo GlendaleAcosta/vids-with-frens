@@ -14,7 +14,6 @@ export default class ChatForm extends React.Component{
     this.refs.msg.value = "";
   }
   render(){
-    console.log("RENDER: CHATBOX");
     return (
       <div className="chat-form">
         <form onSubmit={this.onSubmit} className="col-12 form-inline"> 
