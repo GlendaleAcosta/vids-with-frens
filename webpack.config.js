@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var path = require('path');
 
