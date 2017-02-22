@@ -1,3 +1,4 @@
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 var path = require('path');
 
 module.exports = {
@@ -21,6 +22,13 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CleanWebpackPlugin(['./app/public/bundle.js'], {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        })
+    ],
     resolve: {
         extensions: [".js", ".json", ".jsx", ".css"],
         alias: {
