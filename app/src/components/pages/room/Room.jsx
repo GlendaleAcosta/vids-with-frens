@@ -10,7 +10,7 @@ export default class Room extends React.Component{
     var socket = io('/', {query: {roomId: props.params.roomId}});
     this.state ={
       socket: socket,
-      selectedVideo: 'Gc40IXMt_3c'
+      selectedVideo: 'fzQ6gRAEoy0'
     }
   }
 
@@ -69,7 +69,7 @@ export default class Room extends React.Component{
       height: '500px',
       width: '100%',
       playerVars: {
-        autoplay: 1,
+        autoplay: 0,
         color: 'red'
       },
     };
@@ -92,6 +92,12 @@ export default class Room extends React.Component{
             onPlay={this.onPlay}
             onPause={this.onPause}
           />
+          <ul>
+            <li>This project is unfinished. I'm currently working on it! Sorry!</li>
+            <li>Note: Everyone should be connected to the room before selecting and playing a video.</li>
+            <li>Note: If the video's not in sync, go back a few seconds or start over to re-sync it.</li>
+            <li>Unfortunately, you can only move backwards in the video. </li>
+          </ul>
         </div>
         <ChatContainer socket={this.state.socket} roomId={this.props.params.roomId}/>
       </div>

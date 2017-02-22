@@ -30,6 +30,7 @@ export default class QueueContainer extends React.Component{
           that.setState({
             videos: res.body.items
           })
+          that.refs.search.value = "";
         }
       })
   }

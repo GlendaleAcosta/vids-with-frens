@@ -47,8 +47,8 @@ io.on('connection', function(socket){
   var roomId = socket.handshake.query.roomId;
   socket.join(roomId);
   
-  socket.on('chat message', function(msg){
-    io.to(roomId).emit('chat', msg);
+  socket.on('chat message', function(chatLine){
+    io.to(roomId).emit('chat', chatLine);
   });
 
   socket.on('video_play', function(time){

@@ -14,13 +14,13 @@ export default class ChatContainer extends React.Component{
   componentDidMount(){
     var that = this;
 
-    this.props.socket.on('chat', function(msg){      
+    this.props.socket.on('chat', function(chatLine){      
       var messages = that.state.messages;
-      var message = {
-        username: "Glendale",
-        message: msg
-      }
-      messages.push(message);
+      // var message = {
+      //   username: window.sessionStorage.getItem('username'),
+      //   message: msg
+      // }
+      messages.push(chatLine);
       that.setState({
         messages: messages
       });

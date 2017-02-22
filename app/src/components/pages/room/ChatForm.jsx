@@ -6,11 +6,15 @@ export default class ChatForm extends React.Component{
     
   }
   onSubmit = (e) => {
-    e.preventDefault();
-    
+    e.preventDefault();  
     var {socket} = this.props;
     var msg = this.refs.msg.value;
-    socket.emit('chat message', msg)
+    // console.log(window.sessionStorage.getItem('username'));
+    var chatLine = {
+        msg: msg,
+        username: window.sessionStorage.getItem('username')
+    }
+    socket.emit('chat message', chatLine)
     this.refs.msg.value = "";
   }
   render(){
