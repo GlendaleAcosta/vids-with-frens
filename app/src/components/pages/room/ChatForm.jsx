@@ -1,21 +1,29 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {showModal} from '../../../actions/modalActions';
 
-export default class ChatForm extends React.Component{
+class ChatForm extends React.Component{
   constructor(props){
     super(props);
-    
   }
   onSubmit = (e) => {
     e.preventDefault();  
-    var {socket} = this.props;
-    var msg = this.refs.msg.value;
-    // console.log(window.sessionStorage.getItem('username'));
-    var chatLine = {
-        msg: msg,
-        username: window.sessionStorage.getItem('username')
+    var that = this;
+    var username = window.sessionStorage.getItem('username');
+    if(!username){
+      that.props.showModal('UsernameModal');
+    } else {
+
+      var {socket} = that.props;
+      var msg = that.refs.msg.value;
+      var chatLine = {
+          msg: msg,
+          username: window.sessionStorage.getItem('username')
+      }
+      socket.emit('chat message', chatLine)
+      that.refs.msg.value = "";
     }
-    socket.emit('chat message', chatLine)
-    this.refs.msg.value = "";
   }
   render(){
     return (
@@ -28,3 +36,12 @@ export default class ChatForm extends React.Component{
     )
   }
 }
+
+// Redux config
+function mapStateToProps(state){
+    return {user: state.user};
+}
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({showModal: showModal}, dispatch);
+}
+export default connect(mapStateToProps, matchDispatchToProps)(ChatForm);

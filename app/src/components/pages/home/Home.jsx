@@ -1,5 +1,4 @@
 import React from 'react';
-import CreateRoomModal from 'CreateRoomModal';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchUser} from '../../../actions/userActions';
@@ -12,7 +11,7 @@ class Home extends React.Component {
 
   createRoom = (e) => {
     e.preventDefault();  
-    this.props.showModal()
+    this.props.showModal('CreateRoomModal')
   }
   
   render(){

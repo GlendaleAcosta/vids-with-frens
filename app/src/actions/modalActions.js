@@ -1,8 +1,8 @@
-export function showModal(){
+export function showModal(modalType){
   return {
     type: 'SHOW_MODAL',
     payload: {
-      modalType: 'CreateRoomModal'
+      modalType: modalType
     }
   }
 }

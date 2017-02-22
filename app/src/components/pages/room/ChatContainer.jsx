@@ -16,10 +16,6 @@ export default class ChatContainer extends React.Component{
 
     this.props.socket.on('chat', function(chatLine){      
       var messages = that.state.messages;
-      // var message = {
-      //   username: window.sessionStorage.getItem('username'),
-      //   message: msg
-      // }
       messages.push(chatLine);
       that.setState({
         messages: messages

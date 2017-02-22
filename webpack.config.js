@@ -40,7 +40,8 @@ module.exports = {
             Error404: path.resolve(__dirname, "app/src/components/pages/404.jsx"),
             // Modals
             Modal: path.resolve(__dirname, "app/src/components/modals/Modal.jsx"),
-            CreateRoomModal: path.resolve(__dirname, "app/src/components/modals/CreateRoomModal.jsx"),
+                CreateRoomModal: path.resolve(__dirname, "app/src/components/modals/CreateRoomModal.jsx"),
+                UsernameModal: path.resolve(__dirname, "app/src/components/modals/UsernameModal.jsx"),
 
         }
     }
