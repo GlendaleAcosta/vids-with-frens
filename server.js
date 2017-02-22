@@ -11,7 +11,8 @@ var io = require('socket.io')(http);
 
 // Mongo Connection
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/vids_with_frens_1");
+// mongoose.connect("mongodb://localhost:27017/vids_with_frens_1");
+mongoose.connect("mongodb://heroku_djnjg02p:boq7nv4ab4b37u1rap66e13pf0@ds159527.mlab.com:59527/heroku_djnjg02p");
 mongoose.connection.on('error', () => {
   console.log('MongoDB connection error. Please make sure MongoDB is running.');
   process.exit();
@@ -25,7 +26,8 @@ app.use(session({
   saveUninitialized: true,
   secret: "SESSION_SECRET",
   store: new MongoStore({
-    url: "mongodb://localhost:27017/vids_with_frens_1",
+    // url: "mongodb://localhost:27017/vids_with_frens_1",
+    url: "mongodb://heroku_djnjg02p:boq7nv4ab4b37u1rap66e13pf0@ds159527.mlab.com:59527/heroku_djnjg02p",
     autoReconnect: true
   })
 }));
