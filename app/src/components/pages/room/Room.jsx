@@ -94,9 +94,9 @@ export default class Room extends React.Component{
           />
           <ul>
             <li>This project is unfinished. I'm currently working on it! Sorry!</li>
+            <li>To Test: Copy the url and paste it into an another incognito window. Try chatting!</li>
             <li>Note: Everyone should be connected to the room before selecting and playing a video.</li>
             <li>Note: If the video's not in sync, go back a few seconds or start over to re-sync it.</li>
-            <li>Unfortunately, you can only move backwards in the video. </li>
           </ul>
         </div>
         <ChatContainer socket={this.state.socket} roomId={this.props.params.roomId}/>
